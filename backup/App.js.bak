@@ -1,0 +1,71 @@
+import React from 'react';
+import './App.css';
+import Header from './components/Header'
+import ToDoContainer from './components/ToDoContainer'
+
+class App extends React.Component{
+
+  state = {
+    todos: []
+  }
+
+  componentDidMount(){
+    fetch('http://localhost:3000/todos')
+    .then(r => r.json())
+    .then(todoData => {
+      this.setState({
+        todos: todoData
+      })
+    })
+  }
+
+  
+  handleNewTodo = (newTodo) => {
+    // console.log(newTodo)
+    const newArray = [...this.state.todos, newTodo]
+    this.setState({
+      todos: newArray
+    })
+  }
+
+  handleCompleteChange = (todoObj) => {
+    console.log(todoObj)
+    const updatedToDoObj = {
+      ...todoObj, 
+      completed: !todoObj.completed
+    }
+    console.log(updatedToDoObj)
+    const newArray = this.state.todos.map(todo => {
+      if(todo.title === updatedToDoObj.title) {
+        return updatedToDoObj
+      }
+      return todo
+    })
+    this.setState({
+      todos: newArray
+    })
+  }
+
+  handleRemoveTodo = (toDel) => {
+    console.log(toDel)
+    const newArray = this.state.todos.filter(todo => todo.title !== toDel.title)
+    this.setState({
+      todos: newArray
+    })
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <Header/>
+        <ToDoContainer handleRemoveTodo={this.handleRemoveTodo} 
+        handleCompleteChange={this.handleCompleteChange} todos={this.state.todos} handleNewTodo={this.handleNewTodo}/>
+      </div>
+    )
+  }
+}
+
+export default App;
+
+
+

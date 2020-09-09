@@ -22,11 +22,13 @@ export default class IncompleteContainer extends Component {
     // To determine which to filter, find out which ToDo title INCLUDES the search term typed.
 
   render() {
+    let arrTodo = this.props.todos.map(todo => <ToDoCard handleRemoveTodo={this.props.handleRemoveTodo} handleCompleteChange={this.props.handleCompleteChange} key={todo.title} todo={todo}/>)
+    // console.log(this.props)
     return (
         <div>
             <h1>Incomplete Todos</h1>
             {/* <SearchBarComponent handleOnChange={this.handleOnChange}/> */}
-            {/* Render ToDo Card for each ToDo */} 
+            {arrTodo} 
             {/* Which Array method can you use? */}
         </div>
     )

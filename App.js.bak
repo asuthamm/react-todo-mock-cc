@@ -1,0 +1,57 @@
+import React from 'react';
+import './App.css';
+import Header from './components/Header'
+import ToDoContainer from './components/ToDoContainer'
+
+
+class App extends React.Component{
+
+  state = {
+    todos: []
+  }
+
+  // handleCompleteChange = (tdoObj) => {
+  //   const updatedTodoObj = {
+  //     ...updatedTodoObj,
+  //     completed: !updatedTodoObj.completed
+  //   }
+  //   const newArray = this.StaticRange.todos.map(todo => {
+  //     if (todo.id === undatedTodoObj) {
+  //       return updatedToDoObj
+  //     }
+  //     return todo
+  //   })
+  // }
+  
+  // componentDidMount(){
+  //   fetch
+  //   .then(r => r.sjon())
+  //   .then(console.log)
+  // }
+  // getNewTitle(infoFromChild) {
+  //   console.log(infoFromChild)
+  // }
+
+
+        
+  // }    
+        // objArr.map(obj => key=(obj.title objlst=obj)
+        // .then(obj =>  this.setState({
+          // todos: obj
+
+  render(){
+    // let arrayOftodo = this.state.todos.map((todo) => <ToDoContainer key={todo.title} todoList={todo/>
+
+    return (
+      <div className="App">
+        <Header/>
+        <ToDoContainer  getNewTitle={this.getNewTitle}/>
+      </div>
+    )
+  }
+}
+
+export default App;
+
+
+

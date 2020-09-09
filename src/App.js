@@ -10,7 +10,18 @@ class App extends React.Component{
     todos: []
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000/todos')
+      .then(r => r.json())
+      .then(rObj => {
+        this.setState({
+          todos: rObj
+        })
+      })
+  }
+
   render(){
+    // console.log(this.state)
     return (
       <div className="App">
         <Header/>
